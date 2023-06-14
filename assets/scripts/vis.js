@@ -19,8 +19,17 @@ var formatTime = d3.timeFormat("%d %m");
 var channels = ["Google", "Social media", "Blog", "Word of mouth", "Other"]
 var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
 
-// var rScale = d3.scaleLinear()
-//     .range([0, 10]);
+  // create a tooltip
+var Tooltip = d3.select("#dataviz")
+                .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("background-color", "white")
+                .style("border", "solid")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+                .style("padding", "5px")
+
 
 //LOAD DATA
 d3.csv("source_of_truth.csv").then(function(data){
@@ -33,6 +42,7 @@ d3.csv("source_of_truth.csv").then(function(data){
         d.date = d3.timeParse("%m/%d/%Y %H:%M:%S")(d["Submitted At"])
         d.channel = d["How did you find Apify? "]
         d.gid = d.channel+d["Token"]
+        d.email = d["email"]
     });
 
     var startDate = d3.min(data, function(d) { return d.date; });
@@ -78,30 +88,36 @@ d3.csv("source_of_truth.csv").then(function(data){
     .attr("width", w)
     .attr("height", h);
 
-
-    // //Generate guide lines
-    // svg.selectAll("line")
-    // .data(data)
-    // .enter()
-    // .append("line")
-    // .attr("x1", function(d) {
-    //         return xScale(d.date);
-    // })
-    // .attr("x2", function(d) {
-    //         return xScale(d.date);
-    // })
-    // .attr("y1", h - padding)
-    // .attr("y2", function(d) {
-    //         return yScale(d.NPS);
-    // })
-    // .attr("stroke", "#ddd")
-    // .attr("stroke-width", 1);
-
     //Define Y axis
     yAxis = d3.axisLeft()
         .scale(yScale)
         .ticks(10);
 
+    // Three function that change the tooltip when user hover / move / leave a cell
+    var mouseover = function(d) {
+        Tooltip
+        .style("opacity", 1)
+        d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1)
+    }
+    var mousemove = function(d) {
+        Tooltip
+        .html("NPS score: " + d.NPS +
+        "\n <br> Email:" + d.email + 
+        "\n Token: " + d.Token +
+        "\n Date: " + formatTime(d.date)
+        )
+        .style("left", (d3.mouse(this)[0]+70) + "px")
+        .style("top", (d3.mouse(this)[1]) + "px")
+    }
+    var mouseleave = function(d) {
+        Tooltip
+        .style("opacity", 1)
+        d3.select(this)
+        .style("stroke", "none")
+        .style("opacity", 0.8)
+    }
 
 //Generate circles last, so they appear in front
         svg.selectAll("circle")
@@ -123,6 +139,9 @@ d3.csv("source_of_truth.csv").then(function(data){
         // .attr("cy", h/2)
         .style("stroke", "none")
         .style("opacity", 0.8)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
         ;
         
         //Create X axis
