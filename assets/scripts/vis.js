@@ -10,25 +10,26 @@ var channels = {
 // For circles
 //Width and height
 var w = 1200;
-var h = 800;
+var h = 480;
 var padding = 40;
 
 var xScale, yScale, rScale, xAxis, yAxis;
-var formatTime = d3.timeFormat("%d %m");
+var formatTime = d3.timeFormat("%d. %m.");
 
 var channels = ["Google", "Social media", "Blog", "Word of mouth", "Other"]
 var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
 
+
   // create a tooltip
 var Tooltip = d3.select("#dataviz")
-                .append("div")
-                .style("opacity", 0)
-                .attr("class", "tooltip")
-                .style("background-color", "white")
-                .style("border", "solid")
-                .style("border-width", "2px")
-                .style("border-radius", "5px")
-                .style("padding", "5px")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    // .style("padding", "5px")
 
 
 //LOAD DATA
@@ -46,6 +47,7 @@ d3.csv("source_of_truth.csv").then(function(data){
     });
 
     var startDate = d3.min(data, function(d) { return d.date; });
+    console.log(startDate);
     var endDate = d3.max(data, function(d) { return d.date; });
 
     var tip = d3.tip()
@@ -57,8 +59,8 @@ d3.csv("source_of_truth.csv").then(function(data){
     xScale = d3.scaleTime()
         .domain([
                 // d3.timeDay.offset(startDate, -1),  //startDate minus one day, for padding
-                new Date(2022, 11, 31), // Jul 01 2022
-                new Date(2023, 11, 31) // Dec 31 2023
+                new Date(2022, 10, 1), // 01 Nov 2022
+                new Date(2023, 5, 31) //  01 Jul 2023
                 // d3.timeDay.offset(endDate, 1)	  //endDate plus one day, for padding
             ])
         .range([padding, w - padding]);
@@ -79,7 +81,7 @@ d3.csv("source_of_truth.csv").then(function(data){
     //Define X axis
     xAxis = d3.axisBottom()
     .scale(xScale)
-    .ticks(12)
+    .ticks(9)
     .tickFormat(formatTime);
 
     //Create SVG element
@@ -98,15 +100,16 @@ d3.csv("source_of_truth.csv").then(function(data){
         Tooltip
         .style("opacity", 1)
         d3.select(this)
-        .style("stroke", "black")
+        .style("stroke", "tomato")
         .style("opacity", 1)
     }
     var mousemove = function(d) {
         Tooltip
         .html("NPS score: " + d.NPS +
-        "\n <br> Email:" + d.email + 
-        "\n Token: " + d.Token +
-        "\n Date: " + formatTime(d.date)
+        "<br> Email: " + d.email + 
+        "<br> Token: " + d.Token +
+        "<br> Date: " + formatTime(d.date) +
+        "<br> Channel: " + d.channel
         )
         .style("left", (d3.mouse(this)[0]+70) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
@@ -137,8 +140,9 @@ d3.csv("source_of_truth.csv").then(function(data){
             return yScale(d.NPS);
         })
         // .attr("cy", h/2)
+        .style("stroke-width", 4)
         .style("stroke", "none")
-        .style("opacity", 0.8)
+        .style("opacity", 0.6)
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)

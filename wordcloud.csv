@@ -1,0 +1,585 @@
+Which apps and services do you use for your workflow?
+Crawlee
+"I don't integrate any, although maybe integration with Google Sheets?"
+Social media only
+make.com
+Twitter
+Scrape
+Node.js
+Wordcouds
+"Python, c++, selenium, requests, pysocks, etc."
+Google Analytics
+Yes
+Clay.run
+php
+Aws
+"Instagram scrapping, facebook scrapping"
+"Instagram, Facebook, Excel"
+Googl map scraper
+Airbnb scrapper
+Webhooks
+A tool to extract or scrape information from social networking sites
+I don’t
+Internal tools
+
+West
+aws s3
+Slack and Discord
+twitter scraper
+python
+Estaría espectacular poder integrarlo con Uipath
+google maps
+"Cheerio, puppeteer"
+Email scraper
+Mainly WordPress
+IG
+"Slack, Zoho One, Trello, Loomly, Google, Microsoft, Evernote, Pipedrive"
+"Monday.com, BigQuery, Ahrefs, Wordpress, ClusterAI, Clearscope"
+jira
+Python
+Python
+Depends
+"Git, VSCode."
+I used to download the results as a csv file to import to my Gmail contacts and then sync to my phone numbers
+Google Maps Scraper
+Google spreadsheet to export the scraping results into a new sheet
+"SaleForce, python"
+"Right now, did not integrate Apify to any other tool. I wanted to reuse slack and webhooks."
+google maps?
+"Chrome, Facebook, Instagram"
+Teams
+"google sheet, airtable..."
+I Prefer apify for data scrabing
+integrated with google spreadsheet
+"hmm, can't think of anything plain json is fine for me"
+web scrapper
+I use a nodejs server to receive webhook events when scraping is done
+"indeed scraper, AWS chalice, AWS RDS"
+"Python, Saturn cloud,"
+Google SERPs Scraper
+Instagram Scrapper
+"Facebook, Google Search"
+Gmail
+Google maps
+I normally rebuild/reformat the data in the end. It would be awesome if that could be part of apify itself. E.g. have a post-processing function called with all data in the end
+
+I'm using mainly google spreadsheet and excel.
+I manually export and then use Python to process the data. Would be nice to have some Python example code and instructions to get started for simple tasks.
+"Lambdas, AWS"
+webscraper
+any
+Not really applicable for my use case
+Twitter Scraper
+python
+"discord, telegram, signal, airtable"
+Zomato
+photo
+figma
+"Not integrating currently, but possibly Google Sheets at some point."
+"graphql,"
+python
+
+scrapping
+Google workspace
+python
+none
+google map
+Google Maps scrapper
+shopify
+Other scraping apps
+"Social listening Twitter, Instagram, presenting blog sites as a dashboard"
+Google Sheets
+Google Map scrape
+"LinkedIn, SignalHire, Apollo"
+actores
+Maps scraper
+"Nothing really, this is a once or twice deal"
+Google Trends
+"Airtable, trello"
+coogle
+I dont have a predetermined workflow so it is hard for me to sat
+I use vscode and github for everything.
+
+Google search result scraper
+"Zapier, GHL, Gmail"
+"Google Sheets, MS Office, Chrome and lots of extensions, Gem"
+multiple
+"Twitter, LinkedIn, Instagram, Crunchbase, Review websites (G2, Trustpilot, etc), Google Sheets, GPT"
+google map scraper
+excel
+"Export de données Twitter-, Tik Tok, Facebook pour analyse de nos médias sociaux"
+zillow scraper
+Wp automatic
+Google Workspace
+Flask
+
+Right now it's just scraping but may use zapier and Google Sheets
+Keboola
+Just Instagram scraper for now
+"Make,"
+Nothing
+"Make, airtable, notion"
+
+"Gmail, Google Sheets, Microsoft Word, Zotero, Google Keep"
+Maybe a simpler way to export to csv (there is 5-6 clicks to find the option)
+Bubble.io; open ai
+Hubspot
+Instagram
+"Slack, Miro, Notion, Confluence, etc"
+
+"Power BI, Internal tools"
+I just download Apify output as csv and upload into Python.
+
+None at the moment
+"Linkedin, yellow pages"
+Phantombuster
+mostly the scrapers and the email service
+Hunter.io & Lemlist
+google sheets integration would be great
+"Facebooks page, post and comment scrap"
+goodreads\
+"Excel, Access"
+Facebook and Mastodon?
+We develop our own platform.
+actors
+Netbeans
+I don't know yet.  I have not explored this yet
+zillow and apartments.com
+Google sheets
+google suite
+mostly the scrapping and email tools
+google sheets
+None
+maps
+Get getting introduced
+Excel
+Instagram
+apify store
+Google Sheets
+"google sheets, zapier"
+none other
+Actors exporting products from shopify stores.
+Various type
+scrapers
+none
+Na
+There are many tools to use every person according to their requirment.
+"Notify, Apollo.io, Asana, Google docs"
+twitter scrap maybe
+PowerBi & Excel
+.....
+I have a website running on PHP
+real estate apps
+
+Clay.com
+"Make, Pabbler, Google Sheet"
+Not sure I understand this question... We use Canvas as a virtual learning environment. We use NVIVO and SPSS to analyse data (plus the Microsoft office products).
+Zapier
+"Amazon, Instagram"
+Maps
+I use the spreadsheet but other could benefit from online spreadsheet interopterability
+"I think something related to sneakers would be amazing if it was integrated, such as sneaker drops online or stores when you can get certain sneakers in stock."
+Dreadful
+"github, python, docker"
+"google map scraper, proxy"
+Pulumi Provider would be nice declarative way how to create actors and tasks..
+Python
+I use google centric apps and often need to get data out of them and into other reporting mechanisms. Google doesnt provide great APIs for all the data so Apify is a convenient tool.
+"Asana (add the export to a task), Slack (notify me when the export is complete), Google business suite"
+https://apify.com/quacker/twitter-scraper
+I used google maps actor for finding location data on saw mills
+not sure
+Chatgbt
+Scraping
+swagbucks
+"Notion, Obsidian, ChatGTP, Elicit, ReadCube Papers, Research Rabbit, Gdrive and many more"
+travel services
+Mostly just web crawlers and web scrapers
+"Excel, Txm."
+"Google Sheets, R"
+Instagram
+google workflow i used
+"On a daily basis I use Facebook, Chat GPT, Twitter and sites under Wordpress"
+Not sure. Just starting trying it out.
+Excel
+"google maps only for now, but facebook and instagram i wish to explore in the future..."
+I used the Zillow web scrapper
+ok
+Google
+Instagram
+"Mainly my Google drive, gmail, and Zapier."
+"Excel, QGis, Mapbox."
+Booking scraper
+Twitter / instagram scraper
+"We used to use a CRM System, but now, we create custom sales dashboard on excel. So, If you could create automatic sales dashboard with various stages as my options, then it would be helpful"
+
+"Just Desktop apps like r, Excel, SPSS, ..."
+"Telegram, Snapchat, WhatsApp, Safari,"
+scrapper
+not sure about this
+"langchain, pinecone"
+Marketing
+Dynamix 365
+Grab
+"Asana streamlines workflows, aids with task management, and brings project management down to its simplest terms."
+Glassdoor website scraper
+booking scraper
+Too many to mention
+Dynamics 365
+"woocommerce, google sheet"
+Gmail Streak
+"Mapidea, informa dB, dynamics 365"
+Go
+Ilk
+none yet
+"For me, Apify is good as is. The export options are sufficient so I haven't found myself wishing that it could integrate with anything esle"
+none
+
+"Replit, Deepnote, OneDrive, Google Drive primarily"
+
+"Airbnb, LinkedIn"
+Excel
+"Google sheets, obsidian"
+
+Airbnb
+Notion and maybe an Excel plugin
+Facebook
+Excel
+Maltego
+google maps scraper
+I'm not using the integration abilities yet so I don't have new insights for you here (:
+Googlereviews
+I exported all the Apify data as a CSV and then imported it into an Airtable that I'm using to track content. So Airtable integration would be neat and save a lot of time.
+NA
+
+Google map scraper
+mongodb
+For now only tiktok
+"Zapier, Twitter, Telegram, Google Sheets, Forms"
+they are not relevant
+i am not sure about this question
+Make.com or webhooks. Maybe pabbly connect
+"SPSS, Excel, Mathlab"
+
+I only noticed Yellow pages and Yelp on Apify. It would be lovely if they could add other directories
+Google Maps
+
+
+"Google sheets, would be great to integrate with an enrichment tool like apollo"
+google colab
+-
+"My main stack is sveltekit, supabase, and prisma."
+"I use VScode, VScode Rest plugin as a substitute for proxyman, ChatGPT, etc."
+"Asana, Slack"
+Octoparse
+excel
+"Crawlee, playwright and brightdata"
+"Linkedin, Hubspot, GSheets..."
+Zappier or Make
+The apps I use are on Apify
+"Tableau, Power BI"
+Text extraction from HTML - in the future will use an app to pull people information from sites
+Google
+wordpress automatic
+Cheerio scrappers
+"AWS, WordPress"
+Notion
+"Stats, Google colab, python pandas library"
+dont know yet
+"Pubbly, Imovie, googleworkspace, clicksend, loom"
+wordpress
+At the moment I run my analysis directly on Python. In the near future I have planned to have a pipeline to dump data for Power Bi so BI people can use it.
+"Pabbly, Excel, Less annoying CRM, chat-GPT4"
+AirBnb scraper
+Airbnb scraper
+"Twitter, Instagram Scrapper and general actors selfmade"
+I use PHP-scripts on my server which processes all data. This is connect to a MySQL-server. So a direct integration would be great.
+none
+Na
+airbnb scrapper and aws
+For now Google search results scraper but I plan to check out other Apify tools soon.
+MS Office
+Reddit
+MLS databases
+"elasticsearch, kibana"
+Google maps
+"R, github, zotero"
+Google Apps
+"Google Maps, Google Search"
+You’ve got it all
+Monte Carlo
+Web the scraping
+zapier
+apps that extract clean text data from various sources
+whatsapp y wordpress
+Python
+vscode jupyter
+flowchat
+Telegram
+Teams
+Airflow
+
+
+"Web scraper, puppeteer and cheerio scraper"
+Don`t even know the name of them. Amazon product review scraping or something like that
+"Langchain, Cohere, Databutton"
+OpenAI for summarizing pages
+"It could integrate with Google Spreadsheets, but it's not going to save me much time so I'd say not worth considering."
+/
+"Tableau, Salesforce, PowerBI"
+GCP
+We are mostly custom in-house developed for now.
+Airbnb
+custom python scripts
+aws and DB
+code
+"Diffbot, content grabber, scrapy"
+Crawlee. Apify Actors and marketplace. Proxy rotation and anti-bot tools. Dataset storage.
+Laravel Vuejs
+Google Services
+Google map scrapper
+I hope you are not charging me because I used it once and I thought it's one of the Free services.
+Scrapper ando python
+havent used apps yet
+Apollo
+Excel and Chrome mostly
+slack
+Google Sheets
+Actors
+Scraper
+web crawler
+no
+instagram
+Nothing
+"google maps, instagram, tripadvisor"
+instagram
+"Facebook post, comment scrapper"
+"Google sheets, Notion"
+"Python, Flask, pythonanywhere"
+Google Collab
+webhook
+visual studio code especially
+"Trello, airtable"
+"I mostly use Make, Zapier, and Bubble"
+I dont know
+Writing results to postgres
+google map
+Right now just express
+"Songkick Crawler, Amazon Crawler, kvk Crawler"
+Excel
+
+
+"Slack, Pabbly"
+
+Excel
+Google Sheets
+quacker/twitter-scraper
+None
+None
+Google reviews scraper
+google maps data scraper
+Height
+instagram hashtag
+instagram hashtag
+Imstagram
+ig
+ig
+ig
+insta
+Instagram
+GIS shapefiles would be great
+Google places
+"Google sheets mostly, dont do any repeated actions"
+U browser
+SQL or elastic search
+"Now, I'm using Zoho Flow with Apify. I'm working with actors like Google Maps and somes social networks."
+
+
+Maps scraper
+MongoDB integration would be awesome
+Most of the scraping agents basically
+Crawlee
+Excel and Powerpoint
+Custom knowledge base
+Zoho
+airbnb
+CRM propio
+Power BI
+"R, SQL"
+"Airtable, Zapier, Softr.io, IFTTT"
+NA
+I like scrapers that can get data from capatcha protected sites
+Azure Functions and ServiceBus
+"Obsidian, Notion, Confluence KBs"
+"python, openai API, azure"
+n/a
+
+"PyCharm, Python"
+Mostly Python to interact via API.
+I would like to use many eventually
+Facebook Post Scrapper
+Gis
+Web scraper
+I can't make any recommendations here for now
+airbnb and ture grabber
+"Google Sheets, chatGPT, Yet Another MailMerge,"
+Instagram account scrapper
+Google maps scraper
+sdwxcv
+Quick books
+Mostly collecting of social media metadata
+I am using Notion and Clickup
+excel
+Auto gpt
+Excel
+google maps scraper
+google maps scraper
+Instagram and Facebook
+Instagram post scraper
+Google Maps web scarper
+R
+"Langchain, Node, MongoDB Atlas, GitHub"
+Google Maps and bookings.com
+Oracle Knowledge
+"Trello, Gmail/Google Drive, Excel, Google Sheets"
+intra fi depositor control panel
+In house python
+none at the moment
+"We're using Kickstarter to get the data from, we have also used Geckoboard to send the scraped data to (using a proxy script running on AWS Lambda)."
+"CPU benchmarks, Windows recommendations, ecommerce CPU pricing"
+social media platforms and CRMs
+Python
+"Instagram hashtag search, posts search, comments search"
+"N8N, power automate, and Make"
+
+
+"GraphQL, OpenAPI"
+google maps scraper
+Python
+"Instagram, Excel, ChatGPT."
+Google for jobs
+
+"monday, upfluence"
+AWS is the other 1/2 of the workflow
+"Langchain, SST, React, Pinecone, AWS lambda"
+excel
+"Google sheets, aws"
+"Instantly, Sales Rocks, Snov.io"
+Telefondan
+Google Sheet
+Django Python
+"hubspot, asana"
+Import plugin
+"Apify offers integrations with a variety of tools and services to enhance its functionality and compatibility. One prominent integration point for Apify is:  Data Storage and Analytics Platforms: Apify can integrate with popular data storage and analytics platforms, such as Amazon S3, Google Cloud Storage, MongoDB, Elasticsearch, and others. These integrations allow users to seamlessly store and analyze the extracted data in their preferred storage systems or perform advanced data processing and analysis using specialized tools. Integration with data storage and analytics platforms enables Apify users to leverage their existing infrastructure and workflows for further data manipulation and insights. By integrating with a wide range of data storage and analytics platforms, Apify provides users with flexibility and options to work with their preferred tools and systems, enabling efficient data processing and analysis."
+most of them
+Scraper Google maps
+Excel
+"Ratings scrapers, search results..."
+"AWS, Outlook, Teams, Python"
+pinterest
+twitter
+news crawlers
+"Notion, Google suite"
+i use contactout email finder
+No other
+All social media platforms
+Django? thats what i use. but im not sure you need to integrate into that.
+"Zapier, Airtable"
+not sure
+Yes
+I use all
+Sentiment and media analisys
+google sheets
+I have a study website which use php to connect apify
+instagram scraper
+"Twitter, telegram, rss/atom"
+Google maps
+Custom
+Google
+"Google Documents. Could Storage (Google Drive, OneDrive, Dropbox)"
+
+"booking.com DE, Google locales api"
+chat gpt
+Own technology to analyze the semantic meaning.
+trust wallet & binance
+"Slack, git"
+none
+
+discord
+"google sheets, procesio, pabbly, i would also like it to integrate with files and programs on my desktop."
+google sheet
+Excel only
+power bi
+none
+C# console app
+"I'm using API, so don't need apps"
+I don't find any particular integration useful
+Custom
+"Google doc, airtable and Gmail"
+I use Actors serive (Facebook URL to ID)
+Twitter and excell
+"google sheets, Python"
+Twitter
+LangChain、OpenAI
+"Anaconda, Spyder, Jupyter Notebook"
+Scrapping
+"notion, python"
+so far I have only used google sheets
+Crawl?
+webhook
+Facebook-groups-scraper
+Supabase and Inngest
+Actor runs
+Website Content Crawler apify/website-content-crawler 	38	2023-05-28 16:43:53	 Succeeded	 13s Google Maps Scraper compass/crawler-google-places 	2	2023-05-27 18:18:41	 Succeeded	 16m4s Example PDF Scraper yir/pdf-scraper 	1	2023-05-27 13:13:30	 Succeeded	 9s HTML to PDF Converter jancurn/url-to-pdf 	1	2023-05-27 09:44:37	 Succeeded	 11s Puppeteer Scraper
+
+apartments crawl
+"For now I am using the Apify web console manually. Since I often write tools in Python, I would like to use ApifyClient if I use it."
+"google sheet, excel"
+unity and c#
+"webscapper, instagram profile scraper"
+"pabbly, google docs, public apis"
+"MS Excel, RStudio"
+web scraper and google search scraper
+Repl
+
+We access the API with httpclient in C#.
+"google sheets, hubspot"
+"Zapier, Make.com, Google Sheets"
+Integrators. These apps move data and information between systems in an automated way.Personal Task Automation. ...
+
+Python
+mostly gogle's set of  applications
+"Kajabi, ShowIt, Libsyn, Wordpress"
+Only Apify
+Chat gpt
+"the website traffic generator, the web scrapers and alot of the automation for ecommerce is a big one im looking for"
+a lot of them
+Alteryx
+Alteryx
+"Meet Alfred, lemlist"
+I recommend make.com
+Notion
+Good work
+
+None
+"Notion (basically for everything), airtable"
+Don't know yet
+
+Все с сервиси от Apify сами по себе довольно интересные.
+Some no code tool like Airtable and Webflow
+google map web scraping
+web scraper
+Instragram Hashtag scrapers
+All of then
+Sheets
+I call apify either manually or from node
+google sheets
+"chatGPT, notion, google sheets"
+
+Again no idea until I actually try it!
+web scraping
+ai
+"Github, VSC, Gitflow, Linear"
+Website Content Crawler for AI feeding
+"Asana, Google Workspace, Lemlist"
+Playing with FB ads.. would like to work with Linkedin
