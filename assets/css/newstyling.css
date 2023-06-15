@@ -1,0 +1,15 @@
+.graphic {
+    background-color: tomato;
+    border: 0;
+    margin: 2em;
+}
+
+#dataviz {
+    margin-bottom: 80px;
+}
+
+.tooltip {
+    display: flex;
+    color: black;
+    padding: 24px !important;
+}
