@@ -18,11 +18,11 @@
     <![endif]-->
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="text/javascript" src="assets/libs/d3.js"></script>
+    <script type="text/javascript" src="d3.js"></script>
     <script type="text/javascript" src="assets/libs/d3-tip.js"></script>
-    <script type="text/javascript" src="assets/libs/d3-annotation.js"></script>
+    <!-- <script type="text/javascript" src="assets/libs/d3-annotation.js"></script>
     <script type="text/javascript" src="assets/libs/helpers.js"></script>
-    <script type="text/javascript" src="assets/libs/localization-fr.js"></script>
+    <script type="text/javascript" src="assets/libs/localization-fr.js"></script> -->
     <!-- <script type="text/javascript" src="assets/scripts/0dataload.js"></script> -->
 
     <div class="container mx-auto px-12 pt-24 ">
@@ -38,7 +38,9 @@
         <li>NPS score</li>
       </ol> -->
       <!-- <script src="./assets/scripts/dataviz.js"></script> -->
-      <div id="dataviz"></div>
+      <div id="dataviz">
+        <g transform="translate(50, 100)"></g>
+      </div>
       <script src="./assets/scripts/vis.js"></script>
       <div id="tooltip" class="hidden">
         <p><strong>Important Label Heading</strong></p>

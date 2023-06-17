@@ -50,11 +50,6 @@ d3.csv("source_of_truth.csv").then(function(data){
     console.log(startDate);
     var endDate = d3.max(data, function(d) { return d.date; });
 
-    var tip = d3.tip()
-        .attr('class', 'd3-tip')
-        .offset([-10, 0]);
-
-
     //Create scale functions
     xScale = d3.scaleTime()
         .domain([
@@ -123,31 +118,64 @@ d3.csv("source_of_truth.csv").then(function(data){
     }
 
 //Generate circles last, so they appear in front
-        svg.selectAll("circle")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx", function(d) {
-                return xScale(d.date);
-        })
-        .attr("fill", function(d) {
-                return myColor(d.channel);
-        })
-        .attr("r", function(d) {
-            return rScale(d.NPS)/8 + 4;
-        })
-        .attr("cy", function(d) {
-            return yScale(d.NPS);
-        })
-        // .attr("cy", h/2)
-        .style("stroke-width", 4)
-        .style("stroke", "none")
-        .style("opacity", 0.6)
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-        ;
+        // svg.selectAll("circle")
+        // .data(data)
+        // .enter()
+        // .append("circle")
+        // .attr("cx", function(d) {
+        //         return xScale(d.date);
+        // })
+        // .attr("fill", function(d) {
+        //         return myColor(d.channel);
+        // })
+        // .attr("r", function(d) {
+        //     return rScale(d.NPS)/8 + 4;
+        // })
+        // .attr("cy", function(d) {
+        //     return yScale(d.NPS);
+        // })
+        // // .attr("cy", h/2)
+        // .style("stroke-width", 4)
+        // .style("stroke", "none")
+        // .style("opacity", 0.6)
+        // .on("mouseover", mouseover)
+        // .on("mousemove", mousemove)
+        // .on("mouseleave", mouseleave)
+        // ;
+
+        var simulation = d3.forceSimulation(data)
+                        .force('charge', d3.forceManyBody().strength(2))
+                        .force('x', d3.forceX().x(function(d) {
+                            return xScale(d.date);
+                        }))
+                        .force('y', d3.forceY().y(function(d) {
+                            return -(h/2);
+                        }))
+                        .force('collision', d3.forceCollide().radius(function(d) {
+                            return d.NPS + 2;
+                        }))
+                        .on('tick', ticked);
         
+        function ticked() {
+            var u = d3.select('svg g')
+                .selectAll('circle')
+                .data(data)
+                .join('circle')
+                .attr('r', function(d) {
+                    return d.NPS;
+                })
+                .style('fill', function(d) {
+                    return myColor(d.channel);
+                })
+                .attr('cx', function(d) {
+                    return d.x;
+                })
+                .attr('cy', function(d) {
+                    return d.y;
+                })
+                .attr('opacity', 0.8)
+                ;
+        }
         //Create X axis
         svg.append("g")
             .attr("class", "axis")
