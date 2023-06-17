@@ -13,3 +13,7 @@
     color: black;
     padding: 24px !important;
 }
+
+circle {
+    fill: orange;
+  }
