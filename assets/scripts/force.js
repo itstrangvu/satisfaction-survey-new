@@ -211,5 +211,6 @@ function ticked() {
 		})
 		.attr('cy', function(d) {
 			return d.y;
-		});
+		})
+        ;
 }

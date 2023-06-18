@@ -17,8 +17,13 @@ var dataset;
 var xScale, yScale, rScale, xAxis, yAxis;
 var formatTime = d3.timeFormat("%d %B");
 
+var colors = ['#7acaa9', '#f9deaa', '#b482ed', '#aef0f5', '#e26c7d', '#a8b7ed', '#c2c5dc'];
+// var color = d3.scaleOrdinal(d3.schemeCategory10);
+var color = d3.scaleOrdinal()
+              .range(colors);
 var channels = ["Google", "Social media", "Blog", "Word of mouth", "Other"]
-var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
+// var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
+var myColor = d3.scaleOrdinal().domain(channels).range(colors);
 
 
 //LOAD DATA
@@ -34,6 +39,7 @@ d3.csv("source_of_truth.csv").then(function(data){
         d.gid = d.channel+d["Token"]
         d.email = d["email"]
         d.source = d["source"]
+        d.improve = d["How can we improve Apify for you? "]
     });
 
     dataset = data;
@@ -61,9 +67,9 @@ d3.csv("source_of_truth.csv").then(function(data){
     // .range([h - padding, padding]);
     .range([h - padding, padding]);
 
-    var rScale = d3.scaleLinear()
+    var rScale = d3.scaleSqrt()
     .domain([0, 10])
-    .range([0, 10]);
+    .range([2, 8]);
 
     //Define X axis
     xAxis = d3.axisBottom()
@@ -88,7 +94,7 @@ d3.csv("source_of_truth.csv").then(function(data){
     
 
     var simulation = d3.forceSimulation(data)
-                    .force('charge', d3.forceManyBody().strength(5))
+                    .force('charge', d3.forceManyBody().strength(2))
                     .force('x', d3.forceX().x(function(d) {
                         return xScale(d.date);
                     }))
@@ -117,7 +123,7 @@ d3.csv("source_of_truth.csv").then(function(data){
             .attr('cy', function(d) {
                 return d.y;
             })
-            .attr('opacity', 0.8)
+            .attr('opacity', 1)
             .style('stroke', 'none')
             .on("mouseover", function(event,d) {
                 console.log("Mouse over")
@@ -127,13 +133,15 @@ d3.csv("source_of_truth.csv").then(function(data){
                 div.html(
                     "Date: " + formatTime(d.date) + 
                     "<br/>" + 
-                    "NPS score: " + d.NPS +
+                    "Score: " + d.NPS +
                     "<br/>" + 
-                    "Email: " + d.email +
-                    "<br/>" + 
+                    // "Email: " + "<br/>" + d.email +
+                    // "<br/>" + 
                     "Channel: " + d.channel +
                     "<br/>" + 
-                    "Source: " + d.source
+                    "Source: " + d.source +
+                    "<br/>" +
+                    "Feedback: " + d.improve
                     )
                     .style("left", (event.pageX + 8) + "px")
                     .style("top", (event.pageY - 8) + "px")
@@ -142,7 +150,7 @@ d3.csv("source_of_truth.csv").then(function(data){
 			        d3.select(this)
                       .style('stroke', 'tomato')
                       .style('stroke-width', 4)
-                      .style('opacity', 1)
+                      .style('opacity', 0.8)
                     ;
             })
             .on("mouseout", function(d) {
@@ -151,7 +159,9 @@ d3.csv("source_of_truth.csv").then(function(data){
                     .style("opacity", 0)
                     this.parentNode.parentNode.appendChild(this.parentNode);      	    
 	                this.parentNode.parentNode.parentNode.appendChild(this.parentNode.parentNode);
-			        d3.select(this).style('stroke', 'none');
+			        d3.select(this)
+                    .style('stroke', 'none')
+                    .style('opacity', 1);
             })  
             ;
     }
