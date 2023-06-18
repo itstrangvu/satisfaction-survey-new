@@ -10,26 +10,16 @@ var channels = {
 // For circles
 //Width and height
 var w = 1200;
-var h = 480;
+var h = 800;
 var padding = 40;
+var dataset;
 
 var xScale, yScale, rScale, xAxis, yAxis;
-var formatTime = d3.timeFormat("%d. %m.");
+var formatTime = d3.timeFormat("%d %B");
 
 var channels = ["Google", "Social media", "Blog", "Word of mouth", "Other"]
 var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
 
-
-  // create a tooltip
-var Tooltip = d3.select("#dataviz")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    // .style("padding", "5px")
 
 
 //LOAD DATA
@@ -45,6 +35,8 @@ d3.csv("source_of_truth.csv").then(function(data){
         d.gid = d.channel+d["Token"]
         d.email = d["email"]
     });
+
+    dataset = data;
 
     var startDate = d3.min(data, function(d) { return d.date; });
     console.log(startDate);
@@ -62,7 +54,7 @@ d3.csv("source_of_truth.csv").then(function(data){
 
     yScale = d3.scaleLinear()
     .domain([
-            0,  //Because I want a zero baseline
+            0,  
             d3.max(data, function(d) { return d.NPS; }),
         ])
     // .range([0,10]);
@@ -70,9 +62,9 @@ d3.csv("source_of_truth.csv").then(function(data){
     .range([h - padding, padding]);
 
     var rScale = d3.scaleSqrt()
+    .domain([0, 10])
     .range([0, 10]);
 
-    
     //Define X axis
     xAxis = d3.axisBottom()
     .scale(xScale)
@@ -90,103 +82,89 @@ d3.csv("source_of_truth.csv").then(function(data){
         .scale(yScale)
         .ticks(10);
 
-    // Three function that change the tooltip when user hover / move / leave a cell
-    var mouseover = function(d) {
-        Tooltip
-        .style("opacity", 1)
-        d3.select(this)
-        .style("stroke", "tomato")
-        .style("opacity", 1)
-    }
-    var mousemove = function(d) {
-        Tooltip
-        .html("NPS score: " + d.NPS +
-        "<br> Email: " + d.email + 
-        "<br> Token: " + d.Token +
-        "<br> Date: " + formatTime(d.date) +
-        "<br> Channel: " + d.channel
-        )
-        .style("left", (d3.mouse(this)[0]+70) + "px")
-        .style("top", (d3.mouse(this)[1]) + "px")
-    }
-    var mouseleave = function(d) {
-        Tooltip
-        .style("opacity", 1)
-        d3.select(this)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
+    var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+    
+
+    var simulation = d3.forceSimulation(data)
+                    .force('charge', d3.forceManyBody().strength(5))
+                    .force('x', d3.forceX().x(function(d) {
+                        return xScale(d.date);
+                    }))
+                    .force('y', d3.forceY().y(function(d) {
+                        return -(h/2);
+                    }))
+                    .force('collision', d3.forceCollide().radius(function(d) {
+                        return d.NPS + 6;
+                    }))
+                    .on('tick', ticked);
+        
+    function ticked() {
+        var u = d3.select('svg g')
+            .selectAll('circle')
+            .data(data)
+            .join('circle')
+            .attr('r', function(d) {
+                return rScale(d.NPS);
+            })
+            .style('fill', function(d) {
+                return myColor(d.channel);
+            })
+            .attr('cx', function(d) {
+                return d.x;
+            })
+            .attr('cy', function(d) {
+                return d.y;
+            })
+            .attr('opacity', 0.8)
+            .style('stroke', 'none')
+            .on("mouseover", function(event,d) {
+                console.log("Mouse over")
+                div.transition()
+                  .duration(200)
+                  .style("opacity", .8);
+                div.html(
+                    "Date: " + formatTime(d.date) + 
+                    "<br/>" + 
+                    "NPS score: " + d.NPS +
+                    "<br/>" + 
+                    "Email: " + d.email +
+                    "<br/>" + 
+                    "Channel: " + d.channel
+                    )
+                    .style("left", (event.pageX + 8) + "px")
+                    .style("top", (event.pageY - 8) + "px")
+                    this.parentNode.parentNode.appendChild(this.parentNode);      	    
+	                this.parentNode.parentNode.parentNode.appendChild(this.parentNode.parentNode);
+			        d3.select(this)
+                      .style('stroke', 'tomato')
+                      .style('stroke-width', 4)
+                      .style('opacity', 1)
+                    ;
+            })
+            .on("mouseout", function(d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0)
+                    this.parentNode.parentNode.appendChild(this.parentNode);      	    
+	                this.parentNode.parentNode.parentNode.appendChild(this.parentNode.parentNode);
+			        d3.select(this).style('stroke', 'none');
+            })  
+            ;
     }
 
-//Generate circles last, so they appear in front
-        // svg.selectAll("circle")
-        // .data(data)
-        // .enter()
-        // .append("circle")
-        // .attr("cx", function(d) {
-        //         return xScale(d.date);
-        // })
-        // .attr("fill", function(d) {
-        //         return myColor(d.channel);
-        // })
-        // .attr("r", function(d) {
-        //     return rScale(d.NPS)/8 + 4;
-        // })
-        // .attr("cy", function(d) {
-        //     return yScale(d.NPS);
-        // })
-        // // .attr("cy", h/2)
-        // .style("stroke-width", 4)
-        // .style("stroke", "none")
-        // .style("opacity", 0.6)
-        // .on("mouseover", mouseover)
-        // .on("mousemove", mousemove)
-        // .on("mouseleave", mouseleave)
-        // ;
-
-        var simulation = d3.forceSimulation(data)
-                        .force('charge', d3.forceManyBody().strength(2))
-                        .force('x', d3.forceX().x(function(d) {
-                            return xScale(d.date);
-                        }))
-                        .force('y', d3.forceY().y(function(d) {
-                            return -(h/2);
-                        }))
-                        .force('collision', d3.forceCollide().radius(function(d) {
-                            return d.NPS + 2;
-                        }))
-                        .on('tick', ticked);
-        
-        function ticked() {
-            var u = d3.select('svg g')
-                .selectAll('circle')
-                .data(data)
-                .join('circle')
-                .attr('r', function(d) {
-                    return d.NPS;
-                })
-                .style('fill', function(d) {
-                    return myColor(d.channel);
-                })
-                .attr('cx', function(d) {
-                    return d.x;
-                })
-                .attr('cy', function(d) {
-                    return d.y;
-                })
-                .attr('opacity', 0.8)
-                ;
-        }
-        //Create X axis
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(0," + (h - padding) + ")")
-            .call(xAxis);
-        
-        //Create Y axis
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + padding + ",0)")
-            .call(yAxis);
+    //Create X axis
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h - padding) + ")")
+        .call(xAxis);
+    
+    //Create Y axis
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + padding + ",0)")
+        .call(yAxis);
 });
 
 
