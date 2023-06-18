@@ -21,7 +21,6 @@ var channels = ["Google", "Social media", "Blog", "Word of mouth", "Other"]
 var myColor = d3.scaleOrdinal().domain(channels).range(d3.schemeSet3);
 
 
-
 //LOAD DATA
 d3.csv("source_of_truth.csv").then(function(data){
     data.forEach(function(d){
@@ -34,6 +33,7 @@ d3.csv("source_of_truth.csv").then(function(data){
         d.channel = d["How did you find Apify? "]
         d.gid = d.channel+d["Token"]
         d.email = d["email"]
+        d.source = d["source"]
     });
 
     dataset = data;
@@ -61,7 +61,7 @@ d3.csv("source_of_truth.csv").then(function(data){
     // .range([h - padding, padding]);
     .range([h - padding, padding]);
 
-    var rScale = d3.scaleSqrt()
+    var rScale = d3.scaleLinear()
     .domain([0, 10])
     .range([0, 10]);
 
@@ -96,7 +96,7 @@ d3.csv("source_of_truth.csv").then(function(data){
                         return -(h/2);
                     }))
                     .force('collision', d3.forceCollide().radius(function(d) {
-                        return d.NPS + 6;
+                        return d.NPS+2;
                     }))
                     .on('tick', ticked);
         
@@ -131,7 +131,9 @@ d3.csv("source_of_truth.csv").then(function(data){
                     "<br/>" + 
                     "Email: " + d.email +
                     "<br/>" + 
-                    "Channel: " + d.channel
+                    "Channel: " + d.channel +
+                    "<br/>" + 
+                    "Source: " + d.source
                     )
                     .style("left", (event.pageX + 8) + "px")
                     .style("top", (event.pageY - 8) + "px")
