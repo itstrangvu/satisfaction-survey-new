@@ -7,6 +7,14 @@ var channels = {
     ot: [4, "Other"],
 }
 
+var channelTypes = {
+    "Google": "Google",
+    "Social media": "Social media", 
+    "Blog": "Blog",
+    "Word of mouth": "Word of mouth", 
+    "Other": "Other",
+}
+
 // For circles
 //Width and height
 var w = 1200;
@@ -36,7 +44,7 @@ d3.csv("source_of_truth.csv").then(function(data){
         }
         d.date = d3.timeParse("%m/%d/%Y %H:%M:%S")(d["Submitted At"])
         d.channel = d["How did you find Apify? "]
-        d.gid = d.channel+d["Token"]
+        d.gid = d["Token"]
         d.email = d["email"]
         d.source = d["source"]
         d.improve = d["How can we improve Apify for you? "]
@@ -177,6 +185,14 @@ d3.csv("source_of_truth.csv").then(function(data){
         .attr("class", "axis")
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
+    
+    let panelFilterChannel = d3.select("div.g-filters").insert("div").attr("id","filter-purpose")
+    panelFilterChannel = panelFilterChannel.append("div")
+    .attr("class","filter-category col-12")
+    .attr("id","1-filters")
+
+    createCheckbox(panelFilterChannel, 0, 0, channelTypes)
+
 });
 
 
