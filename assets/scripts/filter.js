@@ -34,13 +34,15 @@ function filtered() {
             console.log(choices)
         }
     )
-
     var circlesToShow = new Set()   // Record the gid of the circles to show
     d3.selectAll("circle")
     .each(
         function(d) {
                 // let toShow = choices.includes(d.NPS) && choices.includes(d.channel)
-                let toShow = choices.includes(d.channel)
+                // let toShow = choices.includes(d.channel) && choices.includes(improveTypes[d.improveType])
+                // let toShow = choices.includes(d.IMP) && choices.includes(d.channel)
+                // let toShow = choices.includes(d.channel) && choices.includes(d.IMP)
+                let toShow = choices.includes(d.IMP)
                 d3.select(this)
                 .classed("fade",!(toShow))
                 .classed("show",!(toShow))
@@ -61,9 +63,10 @@ function filtered() {
 }
 
 function cleanItUp(str) {
-    var s = str.toLowerCase();
-    if (s.includes('atmospheric,')) {
-        s = s.replace('atmospheric,', '');
+    // var s = str.toLowerCase();
+    var s = str;
+    if (s.includes('Onboarding,')) {
+        s = s.replace('Onboarding,', '');
         return s = s.charAt(1).toUpperCase() + s.slice(2);
     } else {
         return s = s.charAt(0).toUpperCase() + s.slice(1);

@@ -15,6 +15,23 @@ var channelTypes = {
     "Other": "Other",
 }
 
+var improveTypes = {
+    "P": "Pricing",
+    "F": "Console Feature",
+    "ON": "Onboarding, New User Experience",
+    "OD": "Onboarding, Documentation",
+    "OT": "Onboarding, Tutorials",
+    "S": "Support", 
+    "X": "Proxy",
+    "E": "Fix errors",
+    "U": "User Interface",
+    "I": "Integrations",
+    "N": "No idea",
+    "G": "All great",
+    "C": "Community",
+    "A": "Public Actor",
+}
+
 // For circles
 //Width and height
 var w = 1200;
@@ -35,8 +52,9 @@ var myColor = d3.scaleOrdinal().domain(channels).range(colors);
 
 
 //LOAD DATA
-d3.csv("source_of_truth.csv").then(function(data){
-    data.forEach(function(d){
+d3.csv("sourceoftruth2.csv").then(function(data){
+    data.forEach(function(d) {
+        var regex = /([a-zA-Z]*)([a-zA-Z-]*)/;
         d.NPS = parseInt(d["How likely are you to recommend Apify to a friend or a colleague?"])
         if (isNaN(d.NPS))
         {
@@ -48,6 +66,11 @@ d3.csv("source_of_truth.csv").then(function(data){
         d.email = d["email"]
         d.source = d["source"]
         d.improve = d["How can we improve Apify for you? "]
+
+        var regex = /([a-zA-Z]*)([a-zA-Z-]*)/;
+        d.type = d["Improve type"]
+        var m = regex.exec(d.type)
+        d.IMP = m[1]
     });
 
     dataset = data;
@@ -149,7 +172,9 @@ d3.csv("source_of_truth.csv").then(function(data){
                     "<br/>" + 
                     "Source: " + d.source +
                     "<br/>" +
-                    "Feedback: " + d.improve
+                    "Feedback: " + d.improve +
+                    "<br/>" +
+                    "Improve category: " + d.IMP
                     )
                     .style("left", (event.pageX + 8) + "px")
                     .style("top", (event.pageY - 8) + "px")
@@ -186,13 +211,19 @@ d3.csv("source_of_truth.csv").then(function(data){
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
     
-    let panelFilterChannel = d3.select("div.g-filters").insert("div").attr("id","filter-purpose")
+    let panelFilterChannel = d3.select("div.g-filters").insert("div").attr("id","filter-channel")
     panelFilterChannel = panelFilterChannel.append("div")
-    .attr("class","filter-category col-12")
+    .attr("class","filter-category")
     .attr("id","1-filters")
 
     createCheckbox(panelFilterChannel, 0, 0, channelTypes)
 
+    let panelFilterImprove = d3.select("div.g-filters").insert("div").attr("id","filter-improve")
+    panelFilterChannel = panelFilterChannel.append("div")
+    .attr("class","filter-category")
+    .attr("id","2-filters")
+
+    createCheckbox(panelFilterChannel, 0, 30, improveTypes)
 });
 
 
