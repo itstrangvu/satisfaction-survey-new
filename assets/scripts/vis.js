@@ -21,7 +21,7 @@ var improveTypes = {
     "ON": "Onboarding, New User Experience",
     "OD": "Onboarding, Documentation",
     "OT": "Onboarding, Tutorials",
-    "S": "Support", 
+    "S": "Customer service", 
     "X": "Proxy",
     "E": "Fix errors",
     "U": "User Interface",
@@ -30,6 +30,7 @@ var improveTypes = {
     "G": "All great",
     "C": "Community",
     "A": "Public Actor",
+    "M": "Marketing"
 }
 
 // For circles
@@ -56,12 +57,15 @@ d3.csv("sourceoftruth2.csv").then(function(data){
     data.forEach(function(d) {
         var regex = /([a-zA-Z]*)([a-zA-Z-]*)/;
         d.NPS = parseInt(d["How likely are you to recommend Apify to a friend or a colleague?"])
-        if (isNaN(d.NPS))
-        {
+        if (isNaN(d.NPS)) {
           d.NPS = 0
         }
         d.date = d3.timeParse("%m/%d/%Y %H:%M:%S")(d["Submitted At"])
-        d.channel = d["How did you find Apify? "]
+        d.channelOriginal = d["How did you find Apify? "]
+        d.channel = d.channelOriginal
+        if (!Object.keys(channelTypes).includes(d.channel)) {
+            d.channel = "Other"
+        }
         d.gid = d["Token"]
         d.email = d["email"]
         d.source = d["source"]
@@ -169,6 +173,8 @@ d3.csv("sourceoftruth2.csv").then(function(data){
                     // "Email: " + "<br/>" + d.email +
                     // "<br/>" + 
                     "Channel: " + d.channel +
+                    "<br/>" + 
+                    "Original channel: " + d.channelOriginal +
                     "<br/>" + 
                     "Source: " + d.source +
                     "<br/>" +
