@@ -68,6 +68,7 @@ d3.csv("sourceoftruth2.csv").then(function(data){
         }
         d.gid = d["Token"]
         d.email = d["email"]
+        d.userID = d["userid"]
         d.source = d["source"]
         d.improve = d["How can we improve Apify for you? "]
 
@@ -175,6 +176,10 @@ d3.csv("sourceoftruth2.csv").then(function(data){
                     "Channel: " + d.channel +
                     "<br/>" + 
                     "Original channel: " + d.channelOriginal +
+                    "<br/>" + 
+                    "Email: " + d.email +
+                    "<br/>" + 
+                    "User ID: " + d.userID +
                     "<br/>" + 
                     "Source: " + d.source +
                     "<br/>" +
